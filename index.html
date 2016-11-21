@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Slotto-Motto!</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/slate/bootstrap.min.css" rel="stylesheet" integrity="sha384-RpX8okQqCyUNG7PlOYNybyJXYTtGQH+7rIKiVvg1DLg6jahLEk47VvpUyS+E2/uJ" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="jumbotron">
+					<h1 class="fancy-font">Welcome to Slotto-Motto!</h1>
+					<p>Slotto-Motto is a simple Gamejam motto generator. Just click the button below and be prepared for awesomeness!</p>
+				</div>
+			</div>
+			<div class="row content fancy-font">
+				<div class="col-md-12 col-lg-12 text-center text-info slot-machine-border">
+					<div class="slot-machine" id="slot1">
+						<div>Explosive</div>
+						<div>Awesome</div>
+						<div>Invisible</div>
+						<div>Fantastic</div>
+						<div>Incredible</div>
+						<div>Sneaky</div>
+						<div>Dangerous</div>
+						<div>Funky</div>
+						<div>Desperate</div>
+						<div>Crazy</div>
+						<div>Nerdy</div>
+						<div>Tasty</div>
+						<div>Rocket</div>
+						<div>Communist</div>
+						<div>Zombie</div>
+						<div>Rainbow</div>
+					</div>
+					<div class="slot-machine" id="slot2">
+						<div>Monkey</div>
+						<div>Cat</div>
+						<div>Penguin</div>
+						<div>Sword</div>
+						<div>Wizard</div>
+						<div>Dwarf</div>
+						<div>Robot</div>
+						<div>Princess</div>
+						<div>Unicorn</div>
+						<div>Dinosaur</div>
+						<div>Assassin</div>
+						<div>Rocket</div>
+						<div>Ninja</div>
+						<div>Crowbar</div>
+						<div>Bubble</div>
+						<div>Pirate</div>
+					</div>
+				</div>
+			</div>
+			<div class="row content fancy-font">
+				<div class="col-md-12 col-lg-12 text-center">
+					<button id="slot-machine-button" type="button" class="btn btn-primary btn-lg">Spin it!</button>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery.slotmachine.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script>
+			$(document).ready(function(){
+				var machine1 = $("#slot1").slotMachine({
+					active	: 1,
+					delay	: 1000,
+					randomize : function(activeElementIndex){
+						return Math.floor(Math.random()*9);
+					}
+				});
+
+				var machine2 = $("#slot2").slotMachine({
+					active	: 1,
+					delay	: 1000,
+					randomize : function(activeElementIndex){
+						return Math.floor(Math.random()*8);
+					}
+				});
+
+				$("#slot-machine-button").click(function(){
+					machine1.shuffle(10);
+					setTimeout(function() { machine2.shuffle(10); },5000);
+
+				});
+			});
+		</script>
+
+	</body>
+</html>
