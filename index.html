@@ -22,40 +22,8 @@
 			<div class="row content fancy-font">
 				<div class="col-md-12 col-lg-12 text-center text-info slot-machine-border">
 					<div class="slot-machine" id="slot1">
-						<div>Explosive</div>
-						<div>Awesome</div>
-						<div>Invisible</div>
-						<div>Fantastic</div>
-						<div>Incredible</div>
-						<div>Sneaky</div>
-						<div>Dangerous</div>
-						<div>Funky</div>
-						<div>Desperate</div>
-						<div>Crazy</div>
-						<div>Nerdy</div>
-						<div>Tasty</div>
-						<div>Rocket</div>
-						<div>Communist</div>
-						<div>Zombie</div>
-						<div>Rainbow</div>
 					</div>
 					<div class="slot-machine" id="slot2">
-						<div>Monkey</div>
-						<div>Cat</div>
-						<div>Penguin</div>
-						<div>Sword</div>
-						<div>Wizard</div>
-						<div>Dwarf</div>
-						<div>Robot</div>
-						<div>Princess</div>
-						<div>Unicorn</div>
-						<div>Dinosaur</div>
-						<div>Assassin</div>
-						<div>Rocket</div>
-						<div>Ninja</div>
-						<div>Crowbar</div>
-						<div>Bubble</div>
-						<div>Pirate</div>
 					</div>
 				</div>
 			</div>
@@ -70,12 +38,63 @@
 		<script type="text/javascript" src="js/jquery.slotmachine.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<script>
+			
+			// Values for the first slot, modify/add/delete here
+			var slot1_values = [
+				"Explosive",
+				"Awesome",
+				"Invisible",
+				"Fantastic",
+				"Incredible",
+				"Sneaky",
+				"Dangerous",
+				"Funky",
+				"Desperate",
+				"Crazy",
+				"Nerdy",
+				"Tasty",
+				"Rocket",
+				"Communist",
+				"Zombie",
+				"Rainbow"
+			]
+			
+			// Values for the second slot, modify/add/delete here
+			var slot2_values = [
+				"Monkey",
+				"Cat",
+				"Penguin",
+				"Sword",
+				"Wizard",
+				"Dwarf",
+				"Robot",
+				"Princess",
+				"Unicorn",
+				"Dinosaur",
+				"Assassin",
+				"Rocket",
+				"Ninja",
+				"Crowbar",
+				"Bubble",
+				"Pirate"
+			]
+			
+			// Slot machine code, do not edit unless you explicitly know what you are doing
 			$(document).ready(function(){
+				
+				$.each(slot1_values, function(key, value) {
+					$("#slot1").append("<div>" + value + "</div>");
+				});
+				
+				$.each(slot2_values, function(key, value) {
+					$("#slot2").append("<div>" + value + "</div>");
+				});
+				
 				var machine1 = $("#slot1").slotMachine({
 					active	: 1,
 					delay	: 1000,
 					randomize : function(activeElementIndex){
-						return Math.floor(Math.random()*9);
+						return Math.floor(Math.random()*slot1_values.length);
 					}
 				});
 
@@ -83,7 +102,7 @@
 					active	: 1,
 					delay	: 1000,
 					randomize : function(activeElementIndex){
-						return Math.floor(Math.random()*8);
+						return Math.floor(Math.random()*slot2_values.length);
 					}
 				});
 
